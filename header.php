@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Labs - Design Studio</title>
 	<meta charset="UTF-8">
@@ -7,7 +8,7 @@
 	<meta name="keywords" content="lab, onepage, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
-	<link href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" rel="shortcut icon"/>
+	<link href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" rel="shortcut icon" />
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700|Roboto:300,400,700" rel="stylesheet">
@@ -28,6 +29,7 @@
 	<![endif]-->
 
 </head>
+
 <body>
 	<!-- Page Preloder -->
 	<!-- <div id="preloder">
@@ -54,31 +56,70 @@
 				<li><a href="elements.html">Elements</a></li>
 			</ul> -->
 			<?php
-        wp_nav_menu([
-            // 'menu' => 'main-menu',
-          'menu_class' => 'menu-list',
-          'theme_location' => 'main-menu',
-          'add_li_class' => '',
-          'current-menu-item' => 'active',
+			wp_nav_menu([
+				// 'menu' => 'main-menu',
+				'menu_class' => 'menu-list',
+				'theme_location' => 'main-menu',
+				'add_li_class' => '',
+				'current-menu-item' => 'active',
 
-          'container' => ''
-        ]);
-        ?>
+				'container' => ''
+			]);
+			?>
 		</nav>
 	</header>
 	<!-- Header section end -->
-<!-- Intro Section -->
-<div class="hero-section">
+	<!-- Intro Section -->
+	<div class="hero-section">
 		<div class="hero-content">
 			<div class="hero-center">
 				<img src="<?php echo get_template_directory_uri(); ?>/img/big-logo.png" alt="">
-				<p>Get your freebie template now!</p>
+
+				<?php
+				$post_id = 20;
+				$queried_post = get_post($post_id);
+				?>
+				<p><?php echo $queried_post->post_title; ?></p>
+
+
+
 			</div>
 		</div>
 		<!-- slider -->
 		<div id="hero-slider" class="owl-carousel">
-			<div class="item  hero-item" data-bg="<?php echo get_template_directory_uri(); ?>/img/01.jpg"></div>
-			<div class="item  hero-item" data-bg="<?php echo get_template_directory_uri(); ?>/img/02.jpg"></div>
+
+			<?php
+			$image = get_field('image_first');
+			$size = 'full'; // (thumbnail, medium, large, full or custom size)
+			if ($image) {
+				?>
+				<div class="item  hero-item" data-bg="<?php echo wp_get_attachment_image($image, $size); ?>"></div>
+			<?php } ?>
+
+			<?php
+			$image = get_field('image_second');
+			$size = 'full'; // (thumbnail, medium, large, full or custom size)
+			if ($image) {
+				?>
+
+				<div class="item  hero-item" data-bg="<?php echo wp_get_attachment_image($image, $size); ?>"></div>
+			<?php } ?>
 		</div>
+
+
+
+
 	</div>
+
+
+
+	<!-- <?php
+			$image = get_field('image_first');
+			$size = 'full'; // (thumbnail, medium, large, full or custom size)
+			if ($image) {
+				echo wp_get_attachment_image($image, $size);
+			}
+			?> -->
+
+
 	<!-- Intro Section -->
