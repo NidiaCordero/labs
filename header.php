@@ -13,12 +13,13 @@
 	<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700|Roboto:300,400,700" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css"/>
+	<!-- <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/flaticon.css"/>
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/magnific-popup.css"/>
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/owl.carousel.css"/>
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css"/>
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css"/> -->
+	<?php wp_head(); ?>
 
 
 	<!--[if lt IE 9]>
@@ -29,12 +30,12 @@
 </head>
 <body>
 	<!-- Page Preloder -->
-	<div id="preloder">
+	<!-- <div id="preloder">
 		<div class="loader">
 			<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="">
 			<h2>Loading.....</h2>
 		</div>
-	</div>
+	</div> -->
 
 
 	<!-- Header section -->
@@ -45,13 +46,24 @@
 		<!-- Navigation -->
 		<div class="responsive"><i class="fa fa-bars"></i></div>
 		<nav>
-			<ul class="menu-list">
+			<!-- <ul class="menu-list">
 				<li class="active"><a href="home.html">Home</a></li>
 				<li><a href="services.html">Services</a></li>
 				<li><a href="blog.html">Blog</a></li>
 				<li><a href="contact.html">Contact</a></li>
 				<li><a href="elements.html">Elements</a></li>
-			</ul>
+			</ul> -->
+			<?php
+        wp_nav_menu([
+            // 'menu' => 'main-menu',
+          'menu_class' => 'menu-list',
+          'theme_location' => 'main-menu',
+          'add_li_class' => '',
+          'current-menu-item' => 'active',
+
+          'container' => ''
+        ]);
+        ?>
 		</nav>
 	</header>
 	<!-- Header section end -->
