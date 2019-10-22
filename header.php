@@ -11,7 +11,7 @@
 	<link href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" rel="shortcut icon" />
 
 	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700|Roboto:300,400,700" rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700|Roboto:300,400,700" rel="stylesheet"> -->
 
 	<!-- Stylesheets -->
 	<!-- <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css"/>
@@ -32,12 +32,12 @@
 
 <body>
 	<!-- Page Preloder -->
-	<!-- <div id="preloder">
+	<div id="preloder">
 		<div class="loader">
 			<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="">
 			<h2>Loading.....</h2>
 		</div>
-	</div> -->
+	</div>
 
 
 	<!-- Header section -->
@@ -70,56 +70,69 @@
 	</header>
 	<!-- Header section end -->
 	<!-- Intro Section -->
+
 	<div class="hero-section">
 		<div class="hero-content">
 			<div class="hero-center">
 				<img src="<?php echo get_template_directory_uri(); ?>/img/big-logo.png" alt="">
 
 				<?php
-				$post_id = 20;
-				$queried_post = get_post($post_id);
-				?>
-				<p><?php echo $queried_post->post_title; ?></p>
 
+				$args = array(
+					'post_type' => 'post',
+					'post_status' => 'publish',
+					'category_name' => 'header_intro',
+					'posts_per_page' => 1,
+				);
+				$arr_posts = new WP_Query($args);
 
+				if ($arr_posts->have_posts()) :
+
+					while ($arr_posts->have_posts()) :
+						$arr_posts->the_post();
+						?>
+						?>
+						<p><?php the_title(); ?></p>
 
 			</div>
 		</div>
 		<!-- slider -->
+
 		<div id="hero-slider" class="owl-carousel">
-
 			<?php
-			$image = get_field('image_first');
-			$size = 'full'; // (thumbnail, medium, large, full or custom size)
-			if ($image) {
-				?>
-				<div class="item  hero-item" data-bg="<?php echo wp_get_attachment_image($image, $size); ?>"></div>
-			<?php } ?>
 
-			<?php
-			$image = get_field('image_second');
-			$size = 'full'; // (thumbnail, medium, large, full or custom size)
-			if ($image) {
-				?>
+					$image = get_field('image_first');
 
-				<div class="item  hero-item" data-bg="<?php echo wp_get_attachment_image($image, $size); ?>"></div>
-			<?php } ?>
+					if (!empty($image)) : ?>
+
+				<div class="item  hero-item" data-bg="<?php echo $image['url']; ?>"">
+					</div>
+					
+					
+					<?php endif; ?>
+					<?php
+
+							$image = get_field('image_second');
+
+							if (!empty($image)) : ?>	
+
+					<div class=" item hero-item" data-bg="<?php echo $image['url']; ?>"">
+						</div>
+						
+				<?php endif; ?>
 		</div>
 
-
+		<?php
+			endwhile;
+		endif; ?>
 
 
 	</div>
 
 
 
-	<!-- <?php
-			$image = get_field('image_first');
-			$size = 'full'; // (thumbnail, medium, large, full or custom size)
-			if ($image) {
-				echo wp_get_attachment_image($image, $size);
-			}
-			?> -->
+
+
 
 
 	<!-- Intro Section -->

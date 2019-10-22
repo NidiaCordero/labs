@@ -1,3 +1,10 @@
+<?php
+/*
+Template Name: home
+Template Post Type: home page
+*/
+ ?>
+
 <?php 
 get_header();
 get_template_part('templates/about');
