@@ -12,7 +12,7 @@ get_header();
     the_post_thumbnail('medium_large')
     ?>
   </div>
-  <h2 class="text-center text-uppercase text-secondary mb-0"><?php the_title(); ?></h2>	  <h2 class="text-center text-uppercase text-secondary mb-0"><?php the_title(); ?></h2>
+  <h2 class="text-center text-uppercase text-secondary mb-0"><?php the_title(); ?></h2>	 
   <div class="post-content">
     <?php the_content(); ?>
   </div>
