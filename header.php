@@ -91,7 +91,7 @@
 					while ($arr_posts->have_posts()) :
 						$arr_posts->the_post();
 						?>
-						?>
+						
 						<p><?php the_title(); ?></p>
 
 			</div>
