@@ -6,7 +6,7 @@
 		<div class="container">
 			<div class="row">
 				
-				<!-- single card -->
+				<!-- single card  on affiche que les trois dernier article de Services-->
 				<?php
 
 				$args = array(
