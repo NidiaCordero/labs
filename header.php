@@ -81,7 +81,7 @@
 				$args = array(
 					'post_type' => 'post',
 					'post_status' => 'publish',
-					'category_name' => 'header_intro',
+					'category_name' => 'header',
 					'posts_per_page' => 1,
 				);
 				$arr_posts = new WP_Query($args);
@@ -99,40 +99,23 @@
 		<!-- slider -->
 
 		<div id="hero-slider" class="owl-carousel">
-			<?php
-
-					$image = get_field('image_first');
-
-					if (!empty($image)) : ?>
-
-				<div class="item  hero-item" data-bg="<?php echo $image['url']; ?>"">
-					</div>
-					
-					
-					<?php endif; ?>
-					<?php
-
-							$image = get_field('image_second');
-
-							if (!empty($image)) : ?>	
-
-					<div class=" item hero-item" data-bg="<?php echo $image['url']; ?>"">
-						</div>
-						
-				<?php endif; ?>
-		</div>
+			<?php 
+			$image_first = get_field('image_first');
+			$image_second = get_field('image_second');
+			if (get_field('image_first')) {
+				echo '<div class="item  hero-item" data-bg="'.$image_first.'"></div>';
+				echo '<div class="item  hero-item" data-bg="'.$image_second.'"></div>';
+			}
+			
+			?>
+            <!-- <div class="item  hero-item" data-bg="img/test.jpg"></div>
+            <div class="item  hero-item" data-bg="img/test.jpg"></div> -->
+        </div>
 
 		<?php
 			endwhile;
 		endif; ?>
 
-
 	</div>
-
-
-
-
-
-
-
+		
 	<!-- Intro Section -->

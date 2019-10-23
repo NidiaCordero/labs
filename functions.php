@@ -16,7 +16,7 @@ function ajout_css_js()
   wp_enqueue_style('owl-carousel', get_template_directory_uri() . '/css/owl.carousel.css');
 //   wp_enqueue_style('media', get_template_directory_uri() . '/css/media.css');
   wp_enqueue_style('styles', get_template_directory_uri() . '/css/style.css');
-  wp_enqueue_style('style', get_template_directory_uri() . 'style.css');
+  wp_enqueue_style('style', get_template_directory_uri() . '/style.css');
   // Ajout des scripts js
   // https://developer.wordpress.org/reference/functions/wp_enqueue_script/
   wp_enqueue_script('jquery-perso', get_template_directory_uri() . '/js/jquery-2.1.4.min.js', null, true);
