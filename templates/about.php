@@ -69,14 +69,13 @@
 								$before_title = get_field('titre_before');
 								$span_title = get_field('span_title');
 								$titre_after = get_field('titre_after');
-								
-								
-								if( get_field('titre_before') ) { 
-									echo '<h2>'. $before_title .'&nbsp <span>' .$span_title.'  </span>'. '&nbsp'. $titre_after.'</h2>';
-								}
-								else {
+
+
+								if (get_field('titre_before')) {
+									echo '<h2>' . $before_title . '&nbsp <span>' . $span_title . '  </span>' . '&nbsp' . $titre_after . '</h2>';
+								} else {
 									?> <h2> <?php the_title(); ?> </h2>
-									<?php
+						<?php
 								}
 								?>
 					</div>
@@ -86,19 +85,36 @@
 						</div>
 					</div>
 					<div class="text-center mt60">
-						<a href="" class="site-btn">
-							 <?php get_field('btn_read_more');
-							 ?>
-						</a>
+						<?php
+								$btn_name = get_field('btn_read_more');
+
+								if (get_field('btn_read_more')) {
+									echo '<a href="" class="site-btn">' . $btn_name . '</a>';
+								} else {
+									echo ' ';
+								}
+								?>
+
 					</div>
 					<!-- popup video -->
 					<div class="intro-video">
 						<div class="row">
 							<div class="col-md-8 col-md-offset-2">
-								<img src="<?php echo get_template_directory_uri(); ?>/img/video.jpg" alt="">
-								<a href="https://www.youtube.com/watch?v=JgHfx2v9zOU" class="video-popup">
-									<i class="fa fa-play"></i>
-								</a>
+								<?php
+										$lien_video = get_field('lien_video');
+										$cover_image = get_field('cover_video');
+										$icon_video = get_field('icon_video');
+
+										if (get_field('cover_video')) {
+											echo '<img src="' . $cover_image . '" alt="">';
+											echo '<a href=" ' . $lien_video . '" class="video-popup">
+									<i class="' . $icon_video . '"></i> </a>';
+										} else {
+											echo ' ';
+										}
+
+										?>
+
 							</div>
 						</div>
 					</div>
