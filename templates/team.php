@@ -38,29 +38,33 @@ if ($arr_posts->have_posts()) :
 		endif; ?>
 			<div class="row">
 				<!-- single member -->
+				<?php
+
+			$args = array(
+				'post_type' => 'team',
+				'post_status' => 'publish',
+				'category_name' => 'team',
+				'posts_per_page' =>3,
+			);
+			$arr_posts = new WP_Query($args);
+
+			if ($arr_posts->have_posts()) :
+
+				while ($arr_posts->have_posts()) :
+					$arr_posts->the_post();
+					?>
 				<div class="col-sm-4">
 					<div class="member">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/team/1.jpg" alt="">
-						<h2>Christinne Williams</h2>
-						<h3>Project Manager</h3>
+						<img src="<?php echo get_field('profil_photo') ?>" alt="">
+						<h2><?php echo get_field('name')?></h2>
+						<h3><?php echo get_field('poste')?></h3>
 					</div>
 				</div>
+				<?php
+				endwhile;
+			endif; ?>
 				<!-- single member -->
-				<div class="col-sm-4">
-					<div class="member">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/team/2.jpg" alt="">
-						<h2>Christinne Williams</h2>
-						<h3>Junior developer</h3>
-					</div>
-				</div>
-				<!-- single member -->
-				<div class="col-sm-4">
-					<div class="member">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/team/3.jpg" alt="">
-						<h2>Christinne Williams</h2>
-						<h3>Digital designer</h3>
-					</div>
-				</div>
+			
 			</div>
 		</div>
 	</div>
