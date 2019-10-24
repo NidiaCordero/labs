@@ -66,4 +66,9 @@ function ajout_image_article()
 }
 // Ajout d'un écouteur d'événement pour activer les images mise en avant pour les post (article)
 add_action('init', 'ajout_image_article'); 
+
+ //pour les post temoignages on cache l editor car par besoin
+add_action( 'init', function() {
+    remove_post_type_support( 'temoignages', 'editor' );
+}, 99);
 ?>
