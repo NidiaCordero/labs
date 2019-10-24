@@ -45,97 +45,59 @@
 										}
 										?>
 							</div>
+							<?php
+				endwhile;
+			endif; ?>
 							<div class="owl-carousel" id="testimonial-slide">
 								<!-- single testimonial -->
+						<?php
+
+							$args = array(
+								'post_type' => 'temoignages',
+								'post_status' => 'publish',
+								'category_name' => 'temoignages',
+								'posts_per_page' => 10,
+							);
+							$arr_posts = new WP_Query($args);
+
+							if ($arr_posts->have_posts()) :
+
+								while ($arr_posts->have_posts()) :
+									$arr_posts->the_post();
+									?>
 								<div class="testimonial">
 									<span>‘​‌‘​‌</span>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
+									<?php
+								$contenu = get_field('temoi_contenu');
+								$nom = get_field('prenom_nom');
+								$poste = get_field('poste');
+								$avatar = get_field('avatar');
+								if (get_field('temoi_contenu')) {
+									echo '<p>'.$contenu.'</p>';
+
+								
+									?>
 									<div class="client-info">
 										<div class="avatar">
-											<img src="<?php echo get_template_directory_uri(); ?>/img/avatar/01.jpg" alt="">
+											<img src="<?php echo $avatar ?>" alt="">
 										</div>
 										<div class="client-name">
-											<h2>Michael Smith</h2>
-											<p>CEO Company</p>
+											<h2><?php echo $nom ?></h2>
+											<p><?php echo $poste ?></p>
 										</div>
 									</div>
+									<?php 
+								}
+								?>
 								</div>
-								<!-- single testimonial -->
-								<div class="testimonial">
-									<span>‘​‌‘​‌</span>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
-									<div class="client-info">
-										<div class="avatar">
-											<img src="<?php echo get_template_directory_uri(); ?>/img/avatar/02.jpg" alt="">
-										</div>
-										<div class="client-name">
-											<h2>Michael Smith</h2>
-											<p>CEO Company</p>
-										</div>
-									</div>
-								</div>
-								<!-- single testimonial -->
-								<div class="testimonial">
-									<span>‘​‌‘​‌</span>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
-									<div class="client-info">
-										<div class="avatar">
-											<img src="<?php echo get_template_directory_uri(); ?>/img/avatar/01.jpg" alt="">
-										</div>
-										<div class="client-name">
-											<h2>Michael Smith</h2>
-											<p>CEO Company</p>
-										</div>
-									</div>
-								</div>
-								<!-- single testimonial -->
-								<div class="testimonial">
-									<span>‘​‌‘​‌</span>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
-									<div class="client-info">
-										<div class="avatar">
-											<img src="<?php echo get_template_directory_uri(); ?>/img/avatar/02.jpg" alt="">
-										</div>
-										<div class="client-name">
-											<h2>Michael Smith</h2>
-											<p>CEO Company</p>
-										</div>
-									</div>
-								</div>
-								<!-- single testimonial -->
-								<div class="testimonial">
-									<span>‘​‌‘​‌</span>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
-									<div class="client-info">
-										<div class="avatar">
-											<img src="<?php echo get_template_directory_uri(); ?>/img/avatar/01.jpg" alt="">
-										</div>
-										<div class="client-name">
-											<h2>Michael Smith</h2>
-											<p>CEO Company</p>
-										</div>
-									</div>
-								</div>
-								<!-- single testimonial -->
-								<div class="testimonial">
-									<span>‘​‌‘​‌</span>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
-									<div class="client-info">
-										<div class="avatar">
-											<img src="<?php echo get_template_directory_uri(); ?>/img/avatar/02.jpg" alt="">
-										</div>
-										<div class="client-name">
-											<h2>Michael Smith</h2>
-											<p>CEO Company</p>
-										</div>
-									</div>
-								</div>
+							
+								<?php
+					endwhile;
+				endif; ?>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<?php
-				endwhile;
-			endif; ?>
+			
 			<!-- Testimonial section end-->
