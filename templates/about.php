@@ -111,7 +111,7 @@
 									<i class="' . $icon_video . '"></i> </a>';
 										} else {
 											echo ' ';
-										}
+										};
 
 										?>
 
