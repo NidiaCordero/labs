@@ -5,7 +5,7 @@ $args = array(
 	'post_type' => 'post',
 	'post_status' => 'publish',
 	'category_name' => 'icon_services',
-	'posts_per_page' => 10,
+	'posts_per_page' => 1,
 );
 $arr_posts = new WP_Query($args);
 
@@ -63,24 +63,43 @@ if ($arr_posts->have_posts()) :
 							</div>
 						</div>
 					</div>
-				
+
 
 			<?php
 				endwhile;
 			endif; ?>
 		</div>
-			<div class="text-center">
-				<?php
-				$btn_name = get_field('btn_read_more');
+		<?php
 
-				if (get_field('btn_read_more')) {
-					echo '<a href="" class="site-btn">' . $btn_name . '</a>';
-				} else {
-					echo ' ';
-				}
+		$args = array(
+			'post_type' => 'post',
+			'post_status' => 'publish',
+			'category_name' => 'icon_services',
+			'posts_per_page' => 1,
+		);
+		$arr_posts = new WP_Query($args);
+
+		if ($arr_posts->have_posts()) :
+
+			while ($arr_posts->have_posts()) :
+				$arr_posts->the_post();
 				?>
-			</div>
-		</div>
+				<div class="text-center">
 
-</div>
+					<?php
+							$btn_name = get_field('btn_read_more');
+
+							if (get_field('btn_read_more')) {
+								echo '<a href="" class="site-btn">' . $btn_name . '</a>';
+							} else {
+								echo ' ';
+							}
+							?>
+				</div>
+		<?php
+			endwhile;
+		endif; ?>
+			</div>
+
+		</div>
 		<!-- services section end -->
