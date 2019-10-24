@@ -71,4 +71,40 @@ add_action('init', 'ajout_image_article');
 add_action( 'init', function() {
     remove_post_type_support( 'temoignages', 'editor' );
 }, 99);
+ //pour les post team on cache l editor car par besoin
+add_action( 'init', function() {
+    remove_post_type_support( 'team', 'editor' );
+}, 99);
+// limite des extrait
+function excerpt($limit) {
+  $excerpt = explode(' ', get_the_excerpt(), $limit);
+
+  if (count($excerpt) >= $limit) {
+      array_pop($excerpt);
+      $excerpt = implode(" ", $excerpt) . '...';
+  } else {
+      $excerpt = implode(" ", $excerpt);
+  }
+
+  $excerpt = preg_replace('`\[[^\]]*\]`', '', $excerpt);
+
+  return $excerpt;
+}
+
+function content($limit) {
+$content = explode(' ', get_the_content(), $limit);
+
+if (count($content) >= $limit) {
+    array_pop($content);
+    $content = implode(" ", $content) . '...';
+} else {
+    $content = implode(" ", $content);
+}
+
+$content = preg_replace('/\[.+\]/','', $content);
+$content = apply_filters('the_content', $content); 
+$content = str_replace(']]>', ']]&gt;', $content);
+
+return $content;
+}
 ?>

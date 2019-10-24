@@ -1,123 +1,86 @@
+<!-- Services section -->
+<?php
 
-	<!-- Services section -->
-	<div class="services-section spad">
-		<div class="container">
-			<div class="section-title dark">
-				<h2>Get in <span>the Lab</span> and see the services</h2>
-			</div>
-			<div class="row">
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-023-flask"></i>
-						</div>
-						<div class="service-text">
-							<h2>Get in the lab</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+$args = array(
+	'post_type' => 'post',
+	'post_status' => 'publish',
+	'category_name' => 'icon_services',
+	'posts_per_page' => 10,
+);
+$arr_posts = new WP_Query($args);
+
+if ($arr_posts->have_posts()) :
+
+	while ($arr_posts->have_posts()) :
+		$arr_posts->the_post();
+		?>
+		<div class="services-section spad">
+			<div class="container">
+				<div class="section-title dark">
+					<?php
+							$before_title = get_field('titre_before');
+							$span_title = get_field('span_title');
+							$titre_after = get_field('titre_after');
+
+
+
+							if (get_field('titre_before')) {
+								echo '<h2>' . $before_title . '&nbsp <span>' . $span_title . '  </span>' . '&nbsp' . $titre_after . '</h2>';
+							} else {
+								?> <h2> <?php the_title(); ?> </h2>
+					<?php
+							}
+							?>
+				</div>
+		<?php
+			endwhile;
+		endif; ?>
+		<div class="row">
+			<!-- single service -->
+			<?php
+
+			$args = array(
+				'post_type' => 'services_page',
+				'post_status' => 'publish',
+				'category_name' => 'icon_services',
+				'posts_per_page' => 9,
+			);
+			$arr_posts = new WP_Query($args);
+
+			if ($arr_posts->have_posts()) :
+
+				while ($arr_posts->have_posts()) :
+					$arr_posts->the_post();
+					?>
+					<div class="col-md-4 col-sm-6">
+						<div class="service">
+							<div class="icon">
+								<i class="<?php the_field('icon'); ?>"></i>
+							</div>
+							<div class="service-text">
+								<h2><?php the_title(); ?></h2>
+								<p><?php echo excerpt(18); ?></p>
+							</div>
 						</div>
 					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-011-compass"></i>
-						</div>
-						<div class="service-text">
-							<h2>Projects online</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-037-idea"></i>
-						</div>
-						<div class="service-text">
-							<h2>SMART MARKETING</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-039-vector"></i>
-						</div>
-						<div class="service-text">
-							<h2>Social Media</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-036-brainstorming"></i>
-						</div>
-						<div class="service-text">
-							<h2>Brainstorming</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-026-search"></i>
-						</div>
-						<div class="service-text">
-							<h2>Documented</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-018-laptop-1"></i>
-						</div>
-						<div class="service-text">
-							<h2>Responsive</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-043-sketch"></i>
-						</div>
-						<div class="service-text">
-							<h2>Retina ready</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-				<!-- single service -->
-				<div class="col-md-4 col-sm-6">
-					<div class="service">
-						<div class="icon">
-							<i class="flaticon-012-cube"></i>
-						</div>
-						<div class="service-text">
-							<h2>Ultra modern</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
-						</div>
-					</div>
-				</div>
-			</div>
+				
+
+			<?php
+				endwhile;
+			endif; ?>
+		</div>
 			<div class="text-center">
-				<a href="" class="site-btn">Browse</a>
+				<?php
+				$btn_name = get_field('btn_read_more');
+
+				if (get_field('btn_read_more')) {
+					echo '<a href="" class="site-btn">' . $btn_name . '</a>';
+				} else {
+					echo ' ';
+				}
+				?>
 			</div>
 		</div>
-	</div>
-	<!-- services section end -->
+
+</div>
+		<!-- services section end -->
