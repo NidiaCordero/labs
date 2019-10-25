@@ -4,7 +4,7 @@
 $args = array(
 	'post_type' => 'post',
 	'post_status' => 'publish',
-	'category_name' => 'newsletter',
+	'category_name' => 'promotion',
 	'posts_per_page' => 1,
 );
 $arr_posts = new WP_Query($args);
