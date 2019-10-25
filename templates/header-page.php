@@ -45,14 +45,25 @@
 		</div>
 		<!-- Navigation -->
 		<div class="responsive"><i class="fa fa-bars"></i></div>
-		<nav>
-			<ul class="menu-list">
-				<li><a href="home.html">Home</a></li>
-				<li class="active"><a href="services.html">Services</a></li>
+			<nav>
+			<!-- <ul class="menu-list">
+				<li class="active"><a href="home.html">Home</a></li>
+				<li><a href="services.html">Services</a></li>
 				<li><a href="blog.html">Blog</a></li>
 				<li><a href="contact.html">Contact</a></li>
 				<li><a href="elements.html">Elements</a></li>
-			</ul>
+			</ul> -->
+			<?php
+			wp_nav_menu([
+				// 'menu' => 'main-menu',
+				'menu_class' => 'menu-list',
+				'theme_location' => 'main-menu',
+				'add_li_class' => '',
+				'current-menu-item' => 'active',
+
+				'container' => ''
+			]);
+			?>
 		</nav>
 	</header>
 	<!-- Header section end -->
@@ -64,10 +75,26 @@
 		<div class="container text-right">
 			<div class="page-info">
 				<h2>Services</h2>
-				<div class="page-links">
+				<!-- <div class="page-links">
 					<a href="#">Home</a>
 					<span>Services</span>
-				</div>
+				</div> -->
+				
+				<div class="page-links">				
+			<?php 
+			$menuParameters = array(
+				'theme_location' => 'second_menu',
+				'current-menu-item' => 'active',
+				'container'       => false,
+				'echo'            => false,
+				'items_wrap'      => '%3$s',
+				'depth'           => 0,
+			  );
+			  
+			  echo strip_tags(wp_nav_menu( $menuParameters ), '<a>' );
+			?>
+				
+			</div>
 			</div>
 		</div>
 	</div>

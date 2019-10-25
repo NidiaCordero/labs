@@ -38,8 +38,12 @@ add_action('wp_enqueue_scripts', 'ajout_css_js');
 function register_main_menu()
 {
   register_nav_menu('main-menu', 'Menu principal dans le header.');
+  register_nav_menu('second_menu', 'Menu principal secondaire le header.');
+
 }
 add_action('after_setup_theme', 'register_main_menu');
+
+
  /**
  * Fonction qui ajoute des attributes au balise a des nav_menu
  *
@@ -107,4 +111,5 @@ $content = str_replace(']]>', ']]&gt;', $content);
 
 return $content;
 }
+
 ?>
