@@ -10,16 +10,6 @@
 	<!-- Favicon -->
 	<link href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" rel="shortcut icon" />
 
-	<!-- Google Fonts -->
-	<!-- <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700|Roboto:300,400,700" rel="stylesheet"> -->
-
-	<!-- Stylesheets -->
-	<!-- <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/flaticon.css"/>
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/magnific-popup.css"/>
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/owl.carousel.css"/>
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css"/> -->
 	<?php wp_head(); ?>
 
 
@@ -74,7 +64,7 @@
 		<div class="overlay"></div>
 		<div class="container text-right">
 			<div class="page-info">
-				<h2>Services</h2>
+				<h2><?php the_title() ?></h2>
 				<!-- <div class="page-links">
 					<a href="#">Home</a>
 					<span>Services</span>
