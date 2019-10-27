@@ -85,7 +85,22 @@ function excerpt($limit) {
 
   if (count($excerpt) >= $limit) {
       array_pop($excerpt);
-      $excerpt = implode(" ", $excerpt) . '... <br> <a href="'. get_permalink($post->ID) . '" class="read-more">' . 'Read More' . '</a>';
+      $excerpt = implode(" ", $excerpt) . '... ';
+  } else {
+      $excerpt = implode(" ", $excerpt);
+  }
+
+  $excerpt = preg_replace('`\[[^\]]*\]`', '', $excerpt);
+
+  return $excerpt;
+}
+// limite des extrait blog
+function excerpt_blog($limit) {
+  $excerpt = explode(' ', get_the_excerpt(), $limit);
+
+  if (count($excerpt) >= $limit) {
+      array_pop($excerpt);
+      $excerpt = implode(" ", $excerpt) . ' <br> <a href="'. get_permalink($post->ID) . '" class="read-more">' . 'Read More' . '</a>';
   } else {
       $excerpt = implode(" ", $excerpt);
   }

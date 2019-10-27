@@ -49,7 +49,7 @@
 
 
                                 </div>
-                                <p><?php echo excerpt(30); ?></p>
+                                <p><?php echo excerpt_blog(30); ?></p>
                                 <!-- <a href="blog-post.html" class="read-more">Read More</a> -->
                                
                             </div>
