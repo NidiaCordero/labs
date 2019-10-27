@@ -85,7 +85,7 @@ function excerpt($limit) {
 
   if (count($excerpt) >= $limit) {
       array_pop($excerpt);
-      $excerpt = implode(" ", $excerpt) . '...';
+      $excerpt = implode(" ", $excerpt) . '... <br> <a href="'. get_permalink($post->ID) . '" class="read-more">' . 'Read More' . '</a>';
   } else {
       $excerpt = implode(" ", $excerpt);
   }
@@ -95,22 +95,6 @@ function excerpt($limit) {
   return $excerpt;
 }
 
-function content($limit) {
-$content = explode(' ', get_the_content(), $limit);
-
-if (count($content) >= $limit) {
-    array_pop($content);
-    $content = implode(" ", $content) . '...';
-} else {
-    $content = implode(" ", $content);
-}
-
-$content = preg_replace('/\[.+\]/','', $content);
-$content = apply_filters('the_content', $content); 
-$content = str_replace(']]>', ']]&gt;', $content);
-
-return $content;
-}
 
 
 
@@ -129,4 +113,8 @@ function my_custom_sidebar() {
   );
 }
 add_action( 'widgets_init', 'my_custom_sidebar' );
+
+
+
+
 ?>
