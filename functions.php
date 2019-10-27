@@ -112,4 +112,21 @@ $content = str_replace(']]>', ']]&gt;', $content);
 return $content;
 }
 
+
+
+// ajout sidebar gauche page blog
+function my_custom_sidebar() {
+  register_sidebar(
+      array (
+          'name' => __( 'sidebar blog', 'Sidebar gauche page blog' ),
+          'id' => 'custom-side-bar',
+          'description' => __( 'Custom Sidebar', 'your-theme-domain' ),
+          'before_widget' => '<div class="widget-content">',
+          'after_widget' => "</div>",
+          'before_title' => '<h3 class="widget-title">',
+          'after_title' => '</h3>',
+      )
+  );
+}
+add_action( 'widgets_init', 'my_custom_sidebar' );
 ?>
