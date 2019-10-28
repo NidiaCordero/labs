@@ -90,14 +90,11 @@
                 </div>
                 <!-- Single widget -->
                 <div class="widget-item">
-                    <h2 class="widget-title">Categories</h2>
-                    <ul>
-                        <?php
-                        wp_list_categories_for_post_type('mon_blog');
-                        
-                        ?>
+                    <!-- <h2 class="widget-title">Categories</h2>
+                    <ul> -->
+                    <?php dynamic_sidebar( 'custom-side-bar' ); ?>
                       
-                    </ul>
+                    <!-- </ul> -->
  
                 </div>
                 <!-- Single widget -->
