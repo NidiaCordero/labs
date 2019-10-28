@@ -228,7 +228,7 @@ function my_search_form( $form ) {
   $form = '<form role="search" method="get" id="searchform" class="search-form" action="' . home_url( '/' ) . '" >
  
   
-  <input type="text" value="' . get_search_query() . '" name="s" id="s" />
+  <input type="text"  placeholder="Search" value="' . get_search_query() . '" name="s" id="s" />
   <input type="submit" id="searchsubmit" class="search-btn" value="'. esc_attr__( '<?php echo <i class="flaticon-026-search"></i> ?>' ) .'" />
   
   </form>';
@@ -237,5 +237,36 @@ function my_search_form( $form ) {
 }
 
 add_filter( 'get_search_form', 'my_search_form', 100 );
+
+
+
+
+
+
+function kana_wp_tag_cloud_filter($return, $args)
+{
+  return '<ul class="tag">'.$return.'</ul>';
+}
+ 
+add_filter('wp_tag_cloud','kana_wp_tag_cloud_filter', 10, 2);
+  
+// add_filter( 'wp_generate_tag_cloud_data', function( $tag_data )
+// {
+//     return array_map ( 
+//         function ( $item )
+//         {
+//             $item['class'] .= ' btn btn-xs btn-primary';
+//             return $item;
+//         }, 
+//         (array) $tag_data 
+//     );
+
+// } );
+
+add_filter( 'wp_tag_cloud', 'no_follow_tag_cloud_links' );
+function no_follow_tag_cloud_links( $return ) {
+	$return = str_replace('<a', '<li><a ', $return );
+	return $return;
+}
 
 ?>
