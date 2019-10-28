@@ -24,36 +24,7 @@ get_template_part('templates/header-page');
                 <div class="col-md-8 col-sm-7 blog-posts">
 
                     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-                        <div class="post-item">
-                            <div class="post-thumbnail">
-                                <?php
-                                        $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                                        echo '<img src="' . $featured_img_url . '" alt="">';
-                                        ?>
-                                <div class="post-date">
-
-                                    <h2><?php echo get_the_date('d'); ?></h2>
-                                    <h3><?php echo get_the_date('M Y'); ?></h3>
-                                </div>
-
-                            </div>
-                            <div class="post-content">
-                                <h2 class="post-title"><?php the_title(); ?></h2>
-                                <div class="post-meta">
-
-                                    <?php
-                                            $tags = get_tags();
-                                            if ($tags) :
-                                                foreach ($tags as $tag) : ?>
-                                            <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>" title="<?php echo esc_attr($tag->name); ?>"><?php echo esc_html($tag->name); ?></a>
-                                        <?php endforeach; ?>
-                                    <?php endif; ?>
-
-                                    <!-- Post item -->
-                                </div>
-                                <p><?php echo excerpt_blog(30); ?></p>
-                            </div>
-                        </div>
+                    <?php get_template_part('/templates-blog/post-loop.php'); ?>
                     <?php endwhile; ?>
 
                 </div>

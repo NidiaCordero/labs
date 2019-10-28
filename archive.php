@@ -1,3 +1,7 @@
+<?php// Ce fichier template spécial de wordpress est appelé pour afficher les catégories ou taxonomie ou autre archive. Voir le wp hierarchy
+// https://wphierarchy.com/
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,10 +106,11 @@
                                 <h2 class="post-title"><?php the_title(); ?></h2>
                                 <div class="post-meta">
 
+                                    <!-- afficher les tags du post -->
                                     <?php
-                                        $tags = get_tags();
-                                        if ($tags) :
-                                            foreach ($tags as $tag) : ?>
+                                            $tags = get_tags();
+                                            if ($tags) :
+                                                foreach ($tags as $tag) : ?>
                                             <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>" title="<?php echo esc_attr($tag->name); ?>"><?php echo esc_html($tag->name); ?></a>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
@@ -115,6 +120,7 @@
                                 <p><?php echo excerpt_blog(30); ?></p>
                             </div>
                         </div>
+                    <?php endwhile; ?>
                 </div>
                 <?php get_template_part('templates-blog/sidebar-blog'); ?>
 
@@ -123,10 +129,9 @@
 
 
 
-        <?php endwhile; ?>
 
         </div>
-        </div>
-        <?php
-        get_footer();
-        ?>
+    </div>
+    <?php
+    get_footer();
+    ?>
