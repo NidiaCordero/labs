@@ -130,6 +130,27 @@ function my_custom_sidebar() {
 add_action( 'widgets_init', 'my_custom_sidebar' );
 
 
+function wp_list_categories_for_post_type($post_type, $args = '') {
+  $exclude = array();
 
+  // Check ALL categories for posts of given post type
+  foreach (get_categories() as $category) {
+      $posts = get_posts(array('post_type' => $post_type, 'category' => $category->cat_ID));
+
+      // If no posts found, ...
+      if (empty($posts))
+          // ...add category to exclude list
+          $exclude[] = $category->cat_ID;
+  }
+
+  // Set up args
+  if (! empty($exclude)) {
+      $args .= ('' === $args) ? '' : '&';
+      $args .= 'exclude='.implode(',', $exclude);
+  }
+
+  // List categories
+  wp_list_categories($args);
+}
 
 ?>
