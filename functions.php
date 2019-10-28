@@ -121,7 +121,7 @@ function my_custom_sidebar() {
           'id' => 'custom-side-bar',
           'description' => __( 'Custom Sidebar', 'your-theme-domain' ),
           'before_widget' => '<div class="widget-content">',
-          'after_widget' => "</div>",
+          'after_widget' => "</div><br><br>",
           'before_title' => '<h3 class="widget-title">',
           'after_title' => '</h3>',
       )
@@ -218,5 +218,24 @@ class list_categories_widget extends WP_Widget {
  
 } // end class list_categories_widget
 add_action('widgets_init', create_function('', 'return register_widget("list_categories_widget");'));
+
+
+// _________
+add_theme_support( 'html5', array( 'search-form' ) );
+// ----
+
+function my_search_form( $form ) {
+  $form = '<form role="search" method="get" id="searchform" class="search-form" action="' . home_url( '/' ) . '" >
+ 
+  
+  <input type="text" value="' . get_search_query() . '" name="s" id="s" />
+  <input type="submit" id="searchsubmit" class="search-btn" value="'. esc_attr__( '<?php echo <i class="flaticon-026-search"></i> ?>' ) .'" />
+  
+  </form>';
+
+  return $form;
+}
+
+add_filter( 'get_search_form', 'my_search_form', 100 );
 
 ?>
