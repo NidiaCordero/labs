@@ -16,7 +16,6 @@ if ($arr_posts->have_posts()) :
 
         ?>
 
-
         <!-- Google map -->
         <div class="map" id="map-area">
             <?php the_content(); ?>

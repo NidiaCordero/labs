@@ -7,21 +7,11 @@
 			<div class="row">
 
 				<!-- single card  on affiche que les trois dernier article de Services-->
+
 				<?php
-
-				$args = array(
-					'post_type' => 'services_page',
-					'post_status' => 'publish',
-					'category_name' => 'icon_services',
-					'posts_per_page' => 3,
-				);
-				$arr_posts = new WP_Query($args);
-
-				if ($arr_posts->have_posts()) :
-
-					while ($arr_posts->have_posts()) :
-						$arr_posts->the_post();
-						?>
+				query_posts(array('orderby' => 'rand', 'post_type' => 'services_page', 'category_name' => 'icon_services', 'showposts' => 3));
+				if (have_posts()) :
+					while (have_posts()) : the_post(); ?>
 
 						<div class="col-md-4 col-sm-6">
 							<div class="lab-card">
@@ -35,8 +25,8 @@
 							</div>
 						</div>
 
-				<?php
-					endwhile;
+				<?php endwhile;
+
 				endif; ?>
 			</div>
 		</div>
