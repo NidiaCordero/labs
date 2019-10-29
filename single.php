@@ -1,6 +1,19 @@
+<?php /* Template Name: single page */ ?>
 <?php
-get_header();
+get_template_part('templates/header-page');
 ?>
+	<!-- Page header -->
+	<div class="page-top-section">
+		<div class="overlay"></div>
+		<div class="container text-right">
+			<div class="page-info">
+				<h2><?php the_title() ?></h2>
+			
+				
+			</div>
+			</div>
+		</div>
+	</div>
 
 <div class="container single-post-container">
 <?php while (have_posts()) : the_post(); ?>
@@ -17,6 +30,8 @@ get_header();
     <?php the_content(); ?>
   </div>
   <?php endwhile; ?>
+</div>
 <?php
+get_template_part('templates-services/newsletter');
 get_footer();
 ?> 

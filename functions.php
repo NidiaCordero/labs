@@ -40,7 +40,8 @@ add_action('wp_enqueue_scripts', 'ajout_css_js');
 function register_main_menu()
 {
   register_nav_menu('main-menu', 'Menu principal dans le header.');
-  register_nav_menu('second_menu', 'Menu principal secondaire le header.');
+  register_nav_menu('second_menu', 'Menu  secondaire le services.');
+  register_nav_menu('third_menu', 'Menu third blog page.');
 
 }
 add_action('after_setup_theme', 'register_main_menu');
