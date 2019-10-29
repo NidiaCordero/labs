@@ -49,7 +49,8 @@ if ($arr_posts->have_posts()) :
 									<input type="text" name="name" placeholder="<?php the_field('placeholder_name'); ?>">
 								</div>
 								<div class="col-sm-6">
-									<?php the_field('placeholder_mail'); ?>
+								
+									<input type="text" name="mail" placeholder="<?php the_field('placeholder_mail'); ?>">
 								</div>
 								<div class="col-sm-12">
 									<input type="text" name="subject" placeholder="<?php the_field('placeholder_name'); ?>">

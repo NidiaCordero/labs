@@ -11,7 +11,7 @@
                     'post_status' => 'publish',
                     'paged' => $paged,
 
-                    'posts_per_page' => 5,
+                    'posts_per_page' => 2,
                 );
                 $arr_posts = new WP_Query($args);
 

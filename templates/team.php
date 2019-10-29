@@ -39,9 +39,9 @@ if ($arr_posts->have_posts()) :
 		<div class="row">
 			<!-- single member -->
 			<?php
-				query_posts(array('orderby' => 'rand', 'post_type' => 'team', 'category_name' => 'team', 'showposts' => 1));
-				if (have_posts()) :
-					while (have_posts()) : the_post(); ?>
+			query_posts(array('orderby' => 'rand', 'post_type' => 'team', 'category_name' => 'team', 'showposts' => 1));
+			if (have_posts()) :
+				while (have_posts()) : the_post(); ?>
 					<div class="col-sm-4">
 						<div class="member">
 							<img src="<?php echo get_field('profil_photo') ?>" alt="">
@@ -49,8 +49,8 @@ if ($arr_posts->have_posts()) :
 							<h3><?php echo get_field('poste') ?></h3>
 						</div>
 					</div>
-					<?php endwhile;
-				endif; ?>
+			<?php endwhile;
+			endif; ?>
 			<?php
 
 			$args = array(
@@ -78,9 +78,9 @@ if ($arr_posts->have_posts()) :
 			endif; ?>
 			<!-- single member -->
 			<?php
-				query_posts(array('orderby' => 'rand', 'post_type' => 'team', 'category_name' => 'team', 'showposts' => 1));
-				if (have_posts()) :
-					while (have_posts()) : the_post(); ?>
+			query_posts(array('orderby' => 'rand', 'post_type' => 'team', 'category_name' => 'team', 'showposts' => 1));
+			if (have_posts()) :
+				while (have_posts()) : the_post(); ?>
 					<div class="col-sm-4">
 						<div class="member">
 							<img src="<?php echo get_field('profil_photo') ?>" alt="">
@@ -88,8 +88,8 @@ if ($arr_posts->have_posts()) :
 							<h3><?php echo get_field('poste') ?></h3>
 						</div>
 					</div>
-					<?php endwhile;
-				endif; ?>
+			<?php endwhile;
+			endif; ?>
 			<!-- single member -->
 
 		</div>

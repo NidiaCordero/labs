@@ -36,22 +36,22 @@ if ($arr_posts->have_posts()) :
 			endwhile;
 		endif; ?>
 		<div class="row">
-			<!-- single service -->
+
 			<?php
-
-			$args = array(
-				'post_type' => 'services_page',
-				'post_status' => 'publish',
-				'category_name' => 'icon_services',
-				'posts_per_page' => 9,
+			$paged = (get_query_var('page')) ? get_query_var('page') : 1;
+			$loop = new WP_Query(
+				array(
+					
+					'posts_per_page' => 9,
+					'post_type' => 'services_page',
+					'category_name' => 'icon_services',
+					'paged'          => $paged
+				)
 			);
-			$arr_posts = new WP_Query($args);
+			if ($loop->have_posts()) :
+				while ($loop->have_posts()) : $loop->the_post(); ?>
+					<!-- single service -->
 
-			if ($arr_posts->have_posts()) :
-
-				while ($arr_posts->have_posts()) :
-					$arr_posts->the_post();
-					?>
 					<div class="col-md-4 col-sm-6">
 						<div class="service">
 							<div class="icon">
@@ -63,11 +63,13 @@ if ($arr_posts->have_posts()) :
 							</div>
 						</div>
 					</div>
-
-
-			<?php
-				endwhile;
+				<?php endwhile; ?>
+				<nav class="pagination">
+					<?php pagination_bar($loop); ?>
+				</nav>
+			<?php wp_reset_postdata();
 			endif; ?>
+
 		</div>
 		<?php
 
