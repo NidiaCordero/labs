@@ -241,14 +241,20 @@ add_filter( 'get_search_form', 'my_search_form', 100 );
 
 
 
+add_filter('wp_generate_tag_cloud', 'myprefix_tag_cloud',10,1);
+
+function myprefix_tag_cloud($tag_string){
+  return preg_replace('/style=("|\')(.*?)("|\')/','',$tag_string);
+}
 
 
-function kana_wp_tag_cloud_filter($return, $args)
+
+function perso_wp_tag_cloud_filter($return, $args)
 {
-  return '<ul class="tag">'.$return.'</ul>';
+  return '<ul class="tag">'.$return.'</ul> ';
 }
  
-add_filter('wp_tag_cloud','kana_wp_tag_cloud_filter', 10, 2);
+add_filter('wp_tag_cloud','perso_wp_tag_cloud_filter', 10, 2);
   
 // add_filter( 'wp_generate_tag_cloud_data', function( $tag_data )
 // {
@@ -268,6 +274,7 @@ function no_follow_tag_cloud_links( $return ) {
 	$return = str_replace('<a', '<li><a ', $return );
 	return $return;
 }
+
 
 
 

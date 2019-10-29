@@ -53,10 +53,13 @@ ul {
 	margin: 0;
 	padding: 0;
 }
+.tag {
+	display: inline-block;
+}
 
 /*------------------------
 	Helper css
---------------------------*/
+--------------------------*/	
 .fix {
 	overflow: hidden;
 }

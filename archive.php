@@ -106,14 +106,7 @@
                                 <h2 class="post-title"><?php the_title(); ?></h2>
                                 <div class="post-meta">
 
-                                    <!-- afficher les tags du post -->
-                                    <?php
-                                            $tags = get_tags();
-                                            if ($tags) :
-                                                foreach ($tags as $tag) : ?>
-                                            <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>" title="<?php echo esc_attr($tag->name); ?>"><?php echo esc_html($tag->name); ?></a>
-                                        <?php endforeach; ?>
-                                    <?php endif; ?>
+                                <?php echo get_the_term_list( get_the_ID(), 'tag_blog', '', ' ' ); ?>
 
                                     <!-- Post item -->
                                 </div>

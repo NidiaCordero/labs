@@ -39,7 +39,7 @@
 
                                     <!-- afficher les tags du post -->
                                   
-                                    <?php echo get_the_term_list( get_the_ID(), 'tag_blog', '', ',' ); ?>
+                                    <?php echo get_the_term_list( get_the_ID(), 'tag_blog', ' ', ' ' ); ?>
 
 
                                 </div>

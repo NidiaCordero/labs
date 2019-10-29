@@ -15,8 +15,7 @@
         <h2 class="post-title"><?php the_title(); ?></h2>
         <div class="post-meta">
 
-        <?php the_tags('');
-                                        ?>
+        <?php echo get_the_term_list( get_the_ID(), 'tag_blog', '', ' ' ); ?>
 
             <!-- Post item -->
         </div>
