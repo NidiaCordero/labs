@@ -1,22 +1,22 @@
 <!-- features section -->
-<?php
+<div class="team-section spad">
+    <div class="overlay"></div>
+    <div class="container">
+        <?php
 
-$args = array(
-    'post_type' => 'post',
-    'post_status' => 'publish',
-    'category_name' => 'services-second',
-    'posts_per_page' => 1,
-);
-$arr_posts = new WP_Query($args);
+        $args = array(
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'category_name' => 'services-second',
+            'posts_per_page' => 1,
+        );
+        $arr_posts = new WP_Query($args);
 
-if ($arr_posts->have_posts()) :
+        if ($arr_posts->have_posts()) :
 
-    while ($arr_posts->have_posts()) :
-        $arr_posts->the_post();
-        ?>
-        <div class="team-section spad">
-            <div class="overlay"></div>
-            <div class="container">
+            while ($arr_posts->have_posts()) :
+                $arr_posts->the_post();
+                ?>
                 <div class="section-title">
                     <?php
                             $before_title = get_field('titre_before');
@@ -38,23 +38,12 @@ if ($arr_posts->have_posts()) :
             endwhile;
         endif; ?>
         <div class="row">
-            <?php
-
-            $args = array(
-                'post_type' => 'services_page',
-                'post_status' => 'publish',
-                'category_name' => 'services-second',
-                'posts_per_page' => 3,
-            );
-            $arr_posts = new WP_Query($args);
-
-            if ($arr_posts->have_posts()) :
-
-                while ($arr_posts->have_posts()) :
-                    $arr_posts->the_post();
-                    ?>
+            <div class="col-md-4 col-sm-4 features">
+        <?php
+				query_posts(array('orderby' => 'rand', 'post_type' => 'services_page', 'category_name' => 'icon_services', 'showposts' => 3));
+				if (have_posts()) :
+					while (have_posts()) : the_post(); ?>
                     <!-- feature item -->
-                    <div class="col-md-4 col-sm-4 features">
                         <div class="icon-box light left">
                             <div class="service-text">
                                 <h2><?php the_title(); ?></h2>
@@ -66,19 +55,19 @@ if ($arr_posts->have_posts()) :
                         </div>
 
 
+                    <?php endwhile;
+
+endif; ?>
                     </div>
 
                     <!-- Devices -->
-            <?php
-                endwhile;
-            endif; ?>
             <?php
 
             $args = array(
                 'post_type' => 'services_page',
                 'post_status' => 'publish',
                 'category_name' => 'image-second-services',
-                'posts_per_page' => 3,
+                'posts_per_page' => 1,
 
             );
             $arr_posts = new WP_Query($args);
@@ -104,22 +93,11 @@ if ($arr_posts->have_posts()) :
                 endwhile;
             endif; ?>
             <!-- feature item -->
-            <?php
-
-            $args = array(
-                'post_type' => 'services_page',
-                'post_status' => 'publish',
-                'category_name' => 'services-first',
-                'posts_per_page' => 3,
-            );
-            $arr_posts = new WP_Query($args);
-
-            if ($arr_posts->have_posts()) :
-
-                while ($arr_posts->have_posts()) :
-                    $arr_posts->the_post();
-                    ?>
                     <div class="col-md-4 col-sm-4 features">
+            <?php
+				query_posts(array('orderby' => 'rand', 'post_type' => 'services_page', 'category_name' => 'icon_services', 'showposts' => 3));
+				if (have_posts()) :
+					while (have_posts()) : the_post(); ?>
                         <div class="icon-box light">
                             <div class="icon">
                                 <i class="flaticon-037-idea"></i>
@@ -128,19 +106,20 @@ if ($arr_posts->have_posts()) :
                                 <h2>Get in the lab</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
                             </div>
-                        </div>
-                <?php
-                    endwhile;
-                endif; ?>
+                       
                 <!-- feature item -->
 
 
 
+                    
+        </div>
+                        <?php endwhile;
+                    endif; ?>
                     </div>
         </div>
         <div class="text-center mt100">
             <a href="" class="site-btn">Browse</a>
         </div>
-            </div>
-        </div>
-        <!-- features section end-->
+    </div>
+</div>
+<!-- features section end-->

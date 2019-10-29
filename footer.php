@@ -1,6 +1,9 @@
+
 	<!-- Footer section -->
+	<?php $text_column = get_theme_mod('coding-footer-text', __('2017 All rights reserved. Designed by '));
+	?>
 	<footer class="footer-section">
-		<h2>2017 All rights reserved. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></h2>
+	<h2> <?= $text_column; ?></h2>
 	</footer>
 	<!-- Footer section end -->
 

@@ -1,4 +1,5 @@
 <?php
+require_once(get_template_directory() . '/includes/footer/costum-footer.php');
 /**
  * Fonction qui va ajouter des scripts dynamiquement afin que l'on puisse les inclures dans le thème avec wp_head() et wp_footer()
  *
@@ -26,6 +27,7 @@ function ajout_css_js()
   wp_enqueue_script('circle-progress', get_template_directory_uri() . '/js/circle-progress.min.js',['jquery-perso'], null, true);
   wp_enqueue_script('maps', get_template_directory_uri() . '/js/map.js',['jquery'],null, true);
   wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js',['jquery-perso'],null, true);
+  
 }
 
 
