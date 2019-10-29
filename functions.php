@@ -24,7 +24,7 @@ function ajout_css_js()
   wp_enqueue_script('magnific-popup', get_template_directory_uri() . '/js/magnific-popup.min.js',['jquery-perso'], null, true);
   wp_enqueue_script('owl-carousel', get_template_directory_uri() . '/js/owl.carousel.min.js',['jquery-perso'], null, true);
   wp_enqueue_script('circle-progress', get_template_directory_uri() . '/js/circle-progress.min.js',['jquery-perso'], null, true);
-//   wp_enqueue_script('maps', get_template_directory_uri() . '/js/map.js',['jquery'],null, true);
+  wp_enqueue_script('maps', get_template_directory_uri() . '/js/map.js',['jquery'],null, true);
   wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js',['jquery-perso'],null, true);
 }
 
