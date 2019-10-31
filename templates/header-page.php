@@ -31,7 +31,18 @@
 <!-- Header section -->
 <header class="header-section">
 		<div class="logo">
-			<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt=""><!-- Logo -->
+		<?php
+// check to see if the logo exists and add it to the page
+if ( get_theme_mod( 'your_theme_logo' ) ) : ?>
+ 
+<img src="<?php echo get_theme_mod( 'your_theme_logo' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" >
+ 
+<?php // add a fallback if the logo doesn't exist
+else : ?>
+ 
+<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
+ 
+<?php endif; ?><!-- Logo -->
 		</div>
 		<!-- Navigation -->
 		<div class="responsive"><i class="fa fa-bars"></i></div>

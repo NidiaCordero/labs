@@ -6,7 +6,7 @@
    <h3 class="mb-5"><?php echo $comments_number ;?> Comments on <?php the_title();?></h3>
     <ul class="comment-list">
         <?php
-      wp_list_comments('type=comment&callback=mytheme_comment');
+      wp_list_comments( 'type=comment&callback=mytheme_comment' ); 
        ?>
     </ul>
 </div>
