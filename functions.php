@@ -296,4 +296,33 @@ function pagination_bar( $custom_query ) {
 
 
 
+// ------
+// commentaires
+// -----------
+// comment form fields re-defined:
+  add_filter( 'comment_form_default_fields', 'mo_comment_fields_custom_html' );
+  function mo_comment_fields_custom_html( $fields ) {
+    // first unset the existing fields:
+    unset( $fields['comment'] );
+    unset( $fields['author'] );
+    unset( $fields['email'] );
+    unset( $fields['url'] );
+    // then re-define them as needed:
+    $fields = [
+      'author' => ' <div class="col-sm-6">' . '<label>' . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
+      '<input id="author" name="author" type="text" placeholder="Name" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" maxlength="245"' . $aria_req . $html_req . ' /></div>',
+      'email'  => '<div class="col-sm-6"><label for="email" > ' . __( '', 'textdomain'  ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
+      '<input id="email" name="email"  placeholder="email"' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" maxlength="100" aria-describedby="email-notes"' . $aria_req . $html_req  . ' /></div>',
+      'url'    => '  <div class="col-sm-12"><label for="url">' . __( '', 'textdomain'  ) . '</label> ' .
+      '<input id="url" name="url"  placeholder="subject"' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" maxlength="200" /></div>',
+      'comment_field' => '  <div class="col-sm-12"><label for="comment">' . _x( '', 'noun', 'textdomain' ) . '</label> ' .
+        '<textarea id="comment" name="comment" cols="45" rows="8"  placeholder="content" maxlength="65525" aria-required="true" required="required"></textarea></div>',
+    ];
+    // done customizing, now return the fields:
+    return $fields;
+  }
+  // remove default comment form so it won't appear twice
+  add_filter( 'comment_form_defaults', 'mo_remove_default_comment_field', 10, 1 ); 
+  function mo_remove_default_comment_field( $defaults ) { if ( isset( $defaults[ 'comment_field' ] ) ) { $defaults[ 'comment_field' ] = ''; } return $defaults; }
+
 ?>

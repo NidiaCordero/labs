@@ -41,34 +41,28 @@ if ($arr_posts->have_posts()) :
 						<p class="con-item"><?php the_field('phone'); ?></p>
 						<p class="con-item"><?php the_field('mail_perso'); ?></p>
 					</div>
-					<!-- contact form -->
-					<div class="col-md-6 col-pull">
-						<form class="form-class" id="con_form">
-							<div class="row">
-								<div class="col-sm-6">
-									<input type="text" name="name" placeholder="<?php the_field('placeholder_name'); ?>">
-								</div>
-								<div class="col-sm-6">
-								
-									<input type="text" name="mail" placeholder="<?php the_field('placeholder_mail'); ?>">
-								</div>
-								<div class="col-sm-12">
-									<input type="text" name="subject" placeholder="<?php the_field('placeholder_name'); ?>">
-									<textarea name="message" placeholder="<?php the_field('placeholder_subject'); ?>"></textarea>
+			<?php
+				endwhile;
+			endif; ?>
+			<!-- contact form -->
+			<div class="col-md-6 col-pull">
+				<?php
 
-									<?php
-											$btn_name = get_field('btn_read_more');
+				$args = array(
+					'post_type' => 'post',
+					'post_status' => 'publish',
+					'category_name' => 'form_contact',
+					'posts_per_page' => 1,
+				);
+				$arr_posts = new WP_Query($args);
 
-											if (get_field('btn_read_more')) {
-												echo '<button class="site-btn">' . $btn_name . '</button>';
-											} else {
-												echo ' ';
-											}
-											?>
-								</div>
-							</div>
-						</form>
-					</div>
+				if ($arr_posts->have_posts()) :
+
+					while ($arr_posts->have_posts()) :
+						$arr_posts->the_post();
+						?>
+						<?php the_content(); ?>
+			</div>
 				</div>
 			</div>
 		</div>
